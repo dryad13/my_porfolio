@@ -14,14 +14,15 @@
 /* --- Custom layers come after Tailwind directives --- */
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    /* Use theme() to directly access the font family from your config */
+    /* This now correctly applies your custom display font */
     font-family: theme('fontFamily.display');
   }
 }
 
-* {
-  font-family: 'Inter', sans-serif;
-}
+/* The overly aggressive universal selector '*' has been removed.
+  Tailwind will now correctly apply your default 'sans' font ('Inter')
+  from your tailwind.config.js file to the body text.
+*/
 
 /* Custom gradient background animation */
 @keyframes gradientShift {
