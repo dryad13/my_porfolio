@@ -333,64 +333,49 @@ function App() {
                     <div key={project.id} className="w-full flex-shrink-0 px-4">
                       {/* Bento Box Layout */}
                       <div className="glass-panel p-6 h-[600px] flex flex-col">
-                        {/* Top Panel - Project Image (70%) */}
-                        <div className="flex-1 mb-6 relative overflow-hidden rounded-2xl">
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className={`absolute top-4 left-4 p-2 rounded-full bg-gradient-to-r ${project.accent}`}>
-                            <IconComponent className="w-5 h-5 text-white" />
+                       <div className="glass-panel p-6 md:p-8 flex flex-col h-[700px] md:h-[650px]">
+  {/* --- 1. Image Panel (Landscape on Desktop, Portrait on Mobile) --- */}
+  <div className="w-full h-auto rounded-2xl overflow-hidden aspect-[3/4] md:aspect-[16/9] mb-4">
+    <img
+      src={project.image}
+      alt={project.title}
+      className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+    />
+  </div>
+
+  {/* --- 2. Description Panel --- */}
+  <div className="flex-grow flex flex-col">
+    <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+    <p className="text-white/80 text-base leading-relaxed mb-4">
+      {project.description}
+    </p>
+  </div>
+
+  {/* --- 3. Links Panel (Dynamic Columns) --- */}
+  <div className="mt-auto pt-4 border-t border-white/10">
+    <div className={`grid gap-4 ${project.hasLiveLink ? 'grid-cols-2' : 'grid-cols-1 place-items-center'}`}>
+      {/* Live Site Button (conditional) */}
+      {project.hasLiveLink && (
+        <button className="w-full text-base bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-4 py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+          <ExternalLink className="w-5 h-5" />
+          Live Site
+        </button>
+      )}
+      {/* View More Button */}
+      <button 
+        onClick={() => openModal(project)}
+        className="w-full text-base border border-white/30 hover:border-cyan-400 text-white hover:text-cyan-400 font-medium px-4 py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
+      >
+        <ChevronDown className="w-5 h-5" />
+        View More
+      </button>
+    </div>
+  </div>
+</div>
+              
                           </div>
                         </div>
-
-                        {/* Bottom Grid (30%) */}
-                        <div className="grid grid-cols-2 gap-4 h-48">
-                          {/* Bottom-Left - Title & Description */}
-                          <div className="glass-panel p-4 rounded-2xl col-span-1 row-span-2">
-                            <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                            <p className="text-white/80 text-sm leading-relaxed line-clamp-6">
-                              {project.description}
-                            </p>
-                          </div>
-
-                          {/* Bottom-Right Top - Skills */}
-                          <div className="glass-panel p-4 rounded-2xl">
-                            <h4 className="text-sm font-semibold text-cyan-400 mb-2">Key Skills</h4>
-                            <div className="flex flex-wrap gap-1">
-                              {project.skills.slice(0, 3).map((skill) => (
-                                <span key={skill} className="text-xs bg-white/10 px-2 py-1 rounded-lg text-white/90">
-                                  {skill}
-                                </span>
-                              ))}
-                              {project.skills.length > 3 && (
-                                <span className="text-xs text-cyan-400">+{project.skills.length - 3}</span>
-                              )}
-                            </div>
-                          </div>
-
-                          {/* Bottom-Right Bottom - Links */}
-                          <div className="glass-panel p-4 rounded-2xl flex flex-col justify-center space-y-2">
-                            {project.hasLiveLink && (
-                              <button className="text-xs bg-cyan-500 hover:bg-cyan-400 text-black font-medium px-3 py-2 rounded-lg transition-colors">
-                                Live Site
-                              </button>
-                            )}
-                            <button 
-                              onClick={() => openModal(project)}
-                              className="text-xs border border-white/30 hover:border-cyan-400 text-white hover:text-cyan-400 font-medium px-3 py-2 rounded-lg transition-colors"
-                            >
-                              View More
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+         
 
             {/* Pagination Dots */}
             <div className="flex justify-center mt-8 space-x-2">
