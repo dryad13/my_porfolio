@@ -280,21 +280,21 @@ function App() {
       </section>
 
       {/* Projects Carousel Section */}
-      <section id="projects" className="py-20">
-        <div className="w-full mx-auto px-4">
+      <section id="projects" className="py-20 overflow-hidden">
+        <div className="w-full mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 fade-in">
             Selected Works & Case Studies
           </h2>
           
           <div className="relative fade-in h-[700px] md:h-[650px] flex items-center justify-center">
             {/* Carousel Track */}
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full" style={{ perspective: '2000px' }}>
               {projects.map((project, index) => {
                 const offset = currentSlide - index;
                 const isCurrent = index === currentSlide;
                 
                 let transformStyle = `translateX(${offset * 100}%) scale(0.7) rotateY(${offset > 0 ? '' : '-'}45deg)`;
-                let opacityStyle = 'opacity-40';
+                let opacityStyle = 'opacity-0';
                 let zIndexStyle = 'z-0';
 
                 if (isCurrent) {
@@ -302,11 +302,11 @@ function App() {
                   opacityStyle = 'opacity-100';
                   zIndexStyle = 'z-20';
                 } else if (index === (currentSlide - 1 + projects.length) % projects.length) {
-                  transformStyle = 'translateX(-50%) scale(0.8) rotateY(45deg)';
+                  transformStyle = 'translateX(-55%) scale(0.8) rotateY(45deg)';
                   opacityStyle = 'opacity-50';
                   zIndexStyle = 'z-10';
                 } else if (index === (currentSlide + 1) % projects.length) {
-                  transformStyle = 'translateX(50%) scale(0.8) rotateY(-45deg)';
+                  transformStyle = 'translateX(55%) scale(0.8) rotateY(-45deg)';
                   opacityStyle = 'opacity-50';
                   zIndexStyle = 'z-10';
                 }
@@ -314,40 +314,42 @@ function App() {
                 return (
                   <div 
                     key={project.id} 
-                    className={`absolute w-full h-full transition-all duration-500 ease-in-out px-2 md:px-20 ${opacityStyle} ${zIndexStyle}`}
-                    style={{ transform: transformStyle, perspective: '1000px' }}
+                    className={`absolute w-full h-full transition-all duration-500 ease-in-out ${opacityStyle} ${zIndexStyle}`}
+                    style={{ transform: transformStyle, transformStyle: 'preserve-3d' }}
                   >
-                    <div className="glass-panel p-4 md:p-6 flex flex-col group h-full">
-                        <div className="w-full h-auto rounded-2xl overflow-hidden aspect-[3/4] md:aspect-[16/9] mb-4">
-                            <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                            />
-                        </div>
-                        <div className="flex-grow flex flex-col px-2">
-                            <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{project.title}</h3>
-                            <p className="text-white/80 text-sm md:text-base leading-relaxed mb-4">
-                            {project.description}
-                            </p>
-                        </div>
-                        <div className="mt-auto pt-4 px-2">
-                            <div className={`grid gap-4 ${project.hasLiveLink ? 'grid-cols-2' : 'grid-cols-1 place-items-center'}`}>
-                              <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className={`${!project.hasLiveLink && 'hidden'}`}>
-                                <button className="w-full text-sm md:text-base bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-4 py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
-                                <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
-                                Live Site
-                                </button>
-                              </a>
-                            <button 
-                                onClick={() => openModal(project)}
-                                className="w-full text-sm md:text-base border border-white/30 hover:border-cyan-400 text-white hover:text-cyan-400 font-medium px-4 py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
-                            >
-                                <ChevronDown className="w-4 h-4 md:w-5 md:h-5" />
-                                View More
-                            </button>
-                            </div>
-                        </div>
+                    <div className="w-full md:w-3/4 lg:w-1/2 h-full mx-auto">
+                      <div className="glass-panel p-4 md:p-6 flex flex-col group h-full">
+                          <div className="w-full h-auto rounded-2xl overflow-hidden aspect-[3/4] md:aspect-[16/9] mb-4">
+                              <img
+                              src={project.image}
+                              alt={project.title}
+                              className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                              />
+                          </div>
+                          <div className="flex-grow flex flex-col px-2">
+                              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{project.title}</h3>
+                              <p className="text-white/80 text-sm md:text-base leading-relaxed mb-4">
+                              {project.description}
+                              </p>
+                          </div>
+                          <div className="mt-auto pt-4 px-2">
+                              <div className={`grid gap-4 ${project.hasLiveLink ? 'grid-cols-2' : 'grid-cols-1 place-items-center'}`}>
+                                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className={`${!project.hasLiveLink && 'hidden'}`}>
+                                  <button className="w-full text-sm md:text-base bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-4 py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+                                  <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
+                                  Live Site
+                                  </button>
+                                </a>
+                              <button 
+                                  onClick={() => openModal(project)}
+                                  className="w-full text-sm md:text-base border border-white/30 hover:border-cyan-400 text-white hover:text-cyan-400 font-medium px-4 py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
+                              >
+                                  <ChevronDown className="w-4 h-4 md:w-5 md:h-5" />
+                                  View More
+                              </button>
+                              </div>
+                          </div>
+                      </div>
                     </div>
                   </div>
                 );
@@ -357,13 +359,13 @@ function App() {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full glass-nav hover:bg-white/20 transition-all duration-300 group"
+              className="absolute left-0 md:left-12 lg:left-24 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full glass-nav hover:bg-white/20 transition-all duration-300 group"
             >
               <ChevronLeft className="w-8 h-8 text-white group-hover:text-cyan-400" />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full glass-nav hover:bg-white/20 transition-all duration-300 group"
+              className="absolute right-0 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full glass-nav hover:bg-white/20 transition-all duration-300 group"
             >
               <ChevronRight className="w-8 h-8 text-white group-hover:text-cyan-400" />
             </button>
