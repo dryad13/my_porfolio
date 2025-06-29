@@ -1,7 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+/* Import the live Ethnocentric font from your Netlify host */
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url('https://lively-gingersnap-c1c1f2.netlify.app/customfont/ethnocentric.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
 
 * {
   font-family: 'Inter', sans-serif;
@@ -135,7 +148,6 @@ html {
   background-clip: text;
 }
 
-/* Line clamp utility for text truncation */
 .line-clamp-6 {
   display: -webkit-box;
   -webkit-line-clamp: 6;
@@ -143,7 +155,6 @@ html {
   overflow: hidden;
 }
 
-/* Carousel specific styles */
 .carousel-container {
   position: relative;
   overflow: hidden;
@@ -159,25 +170,6 @@ html {
   flex-shrink: 0;
 }
 
-/* Bento box grid styles */
-.bento-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 1rem;
-  height: 200px;
-}
-
-.bento-item-large {
-  grid-column: 1;
-  grid-row: 1 / -1;
-}
-
-.bento-item-small {
-  grid-column: 2;
-}
-
-/* Enhanced glass panel for carousel items */
 .carousel-glass-panel {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(30px);
@@ -194,13 +186,11 @@ html {
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
 }
 
-/* Modal styles */
 .modal-backdrop {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .glass-panel {
     border-radius: 16px;
@@ -211,23 +201,11 @@ html {
     transform: translateY(-4px) scale(1.01);
   }
 
-  .bento-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr 1fr;
-    height: auto;
-  }
-
-  .bento-item-large {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
   .carousel-slide {
     padding: 0 1rem;
   }
 }
 
-/* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
   .glass-panel:hover {
     background: rgba(255, 255, 255, 0.05);
