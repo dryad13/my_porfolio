@@ -1,7 +1,7 @@
 /* Import the live Ethnocentric font from your Netlify host */
 @font-face {
   font-family: 'Ethnocentric';
-  src: url('https://lively-gingersnap-c1c1f2.netlify.app/customfont/ethnocentric.otf') format('otf');
+  src: url('admirable-crostata-29ed9e.netlify.app/customfont/ethnocentric.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
