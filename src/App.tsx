@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown, Mail, Github, Linkedin, ExternalLink, Code, Zap, TrendingUp, Brain, ChevronLeft, ChevronRight, X, Monitor, Palette, ShoppingBag, Rocket, BarChart3, Shield, Cpu } from 'lucide-react';
+import { ChevronDown, Mail, Github, Linkedin, ExternalLink, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 // Main App Component
 function App() {
@@ -91,97 +91,100 @@ function App() {
     ]
   };
 
-  // Data for the projects carousel
+  // UPDATED projects data with detailed descriptions and live links
   const projects = [
-        {
-            id: 1,
-            title: 'Daak and Co.',
-            description: 'As the E-commerce Lead, I built the Shopify store from scratch and led the strategy that scaled the brand to over 4M+ PKR in revenue through 5 major collection launches.',
-            image: 'https://images.pexels.com/photos/3769747/pexels-photo-3769747.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-            hasLiveLink: true,
-            detailedDescription: 'Led the complete digital transformation of Daak and Co., building their Shopify presence from the ground up. Implemented advanced analytics tracking, optimized conversion funnels, and executed data-driven marketing strategies that resulted in consistent month-over-month growth. Managed cross-functional teams and coordinated with suppliers to ensure seamless fulfillment across 5 major product launches.'
-        },
-        {
-            id: 2,
-            title: 'Insurgo',
-            description: 'Co-founded a venture to provide end-to-end e-commerce solutions. As Head of E-commerce, I managed the entire client lifecycle from development to marketing and fulfillment.',
-            image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-            hasLiveLink: false,
-            detailedDescription: 'Co-founded and scaled Insurgo from concept to a full-service e-commerce agency. Built strategic partnerships with suppliers, developed standardized processes for client onboarding, and created scalable systems for managing multiple concurrent projects. Successfully delivered solutions across diverse industries including wellness, fashion, and consumer goods.'
-        },
-        {
-            id: 3,
-            title: 'Variety Centre',
-            description: 'Developed the first-ever e-commerce presence for an established, multi-outlet toy store brand in Karachi, creating a new digital sales channel for their business.',
-            image: 'https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-            hasLiveLink: false,
-            detailedDescription: 'Digitally transformed a traditional brick-and-mortar toy retailer by creating their first e-commerce platform. Managed the complex process of cataloging hundreds of products, implementing inventory synchronization between physical and digital stores, and training staff on order management systems.'
-        },
-        {
-            id: 4,
-            title: 'Ensensity',
-            description: 'Led the end-to-end development of a new Shopify store for a wellness/perfume brand, focusing on a clean UX and mobile-responsive design.',
-            image: 'https://images.pexels.com/photos/1961795/pexels-photo-1961795.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-            hasLiveLink: true,
-            detailedDescription: 'Designed and developed a premium e-commerce experience for Ensensity, focusing on sensory storytelling and brand immersion. Implemented custom product visualization features, optimized mobile performance, and created an intuitive navigation system that increased user engagement by 40%.'
-        },
-        {
-            id: 5,
-            title: 'Primade',
-            description: 'Following the store build by Insurgo, I was contracted to lead the brand\'s go-to-market strategy, managing paid social campaigns and co-directing a DVC.',
-            image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-            hasLiveLink: true,
-            detailedDescription: 'Orchestrated a comprehensive go-to-market strategy for Primade, including market research, competitive analysis, and multi-channel campaign execution. Managed a significant budget across Facebook and Instagram ads, achieving a 3.2x ROAS while building brand awareness in the competitive F&B market.'
-        },
-        {
-            id: 6,
-            title: 'Sipsters (BabuBazaar)',
-            description: 'Developed a custom Shopify store for a new consumer goods brand, focusing on a vibrant, product-focused UI to launch their unique line of tumblers.',
-            image: 'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-            hasLiveLink: false,
-            detailedDescription: 'Created a vibrant, youth-focused e-commerce platform for Sipsters, emphasizing product customization and social sharing features. Implemented advanced product configurators, integrated social proof elements, and optimized the checkout process for mobile users, resulting in a 25% increase in conversion rates.'
-        },
-        {
-            id: 7,
-            title: 'Popcorn Media (Freelance)',
-            description: 'Engaged by a digital agency as a specialist to provide custom development and ongoing technical maintenance for their high-profile fashion clients.',
-            image: 'https://images.pexels.com/photos/325876/pexels-photo-325876.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-            hasLiveLink: false,
-            detailedDescription: 'Provided specialized technical expertise to Popcorn Media for their premium fashion clients including Ivar Clothing and Shaad Fabrics. Developed custom Liquid templates, implemented complex product filtering systems, and maintained high-performance stores under heavy traffic loads during sale periods.'
-        },
-        {
-            id: 8,
-            title: 'Visual Transformer for LIGO Data',
-            description: 'My FYP involves developing a deep learning (ViT) model to classify gravitational wave data from black hole collisions, applying AI to complex scientific problems.',
-            image: 'https://images.pexels.com/photos/2156/sky-earth-space-working.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-            hasLiveLink: false,
-            detailedDescription: 'Developing a cutting-edge Visual Transformer architecture to analyze gravitational wave data from the LIGO observatory. The project involves preprocessing complex time-series data, implementing attention mechanisms for pattern recognition, and achieving classification accuracy improvements over traditional CNN approaches.'
-        },
-        {
-            id: 9,
-            title: 'Financial Simulation Project',
-            description: 'Implemented a Monte Carlo simulation to model PSX stock outcomes, demonstrating the efficiency of parallel programming algorithms in complex financial analysis.',
-            image: 'https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-            hasLiveLink: false,
-            detailedDescription: 'Built a sophisticated Monte Carlo simulation engine for modeling Pakistan Stock Exchange outcomes. Implemented parallel processing algorithms using multiprocessing libraries, achieving 10x performance improvements over sequential implementations while maintaining statistical accuracy across millions of iterations.'
-        },
-        {
-            id: 10,
-            title: 'IoT Network Design Project',
-            description: 'Designed a comprehensive IoT security and automated fire suppression system in Cisco Packet Tracer, focusing on network reliability and real-time response.',
-            image: 'https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-            hasLiveLink: false,
-            detailedDescription: 'Architected a comprehensive IoT security system integrating fire detection, automated suppression, and real-time monitoring capabilities. Designed network topology for optimal redundancy, implemented security protocols for device authentication, and created automated response workflows for emergency scenarios.'
-        },
-        {
-            id: 11,
-            title: 'AI Smart Irrigation Bot',
-            description: 'Led the hardware development and sensor integration for an Arduino-based smart irrigation bot, applying control logic to a physical, hands-on system.',
-            image: 'https://images.pexels.com/photos/159298/gears-cogs-machine-machinery-159298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-            hasLiveLink: false,
-            detailedDescription: 'Developed an intelligent irrigation system using Arduino microcontrollers, integrating soil moisture sensors, weather API data, and automated watering mechanisms. Implemented machine learning algorithms for predictive watering schedules and created a mobile app interface for remote monitoring and control.'
-        }
-    ];
+    {
+        id: 1,
+        title: 'Daak and Co.',
+        description: 'Led the e-commerce strategy that scaled this fashion brand to over 4M+ PKR in revenue.',
+        image: 'https://images.pexels.com/photos/3769747/pexels-photo-3769747.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        hasLiveLink: true,
+        liveLink: 'https://daakandco.com',
+        detailedDescription: 'As the technical and strategic lead for Daak and Co., I orchestrated a complete digital transformation, building their Shopify presence from the ground up. My role involved implementing advanced analytics for data-driven marketing, optimizing conversion funnels for a high-end fashion audience, and executing a robust SEO strategy. I successfully managed the technical execution of five major collection launches, ensuring 100% uptime during peak traffic, and coordinated with suppliers for a seamless inventory and fulfillment pipeline. This project showcases my ability to merge technical development with high-level business strategy to achieve significant, measurable revenue growth.'
+    },
+    {
+        id: 2,
+        title: 'Insurgo',
+        description: 'Co-founded a venture to provide end-to-end e-commerce solutions for a diverse client portfolio.',
+        image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        hasLiveLink: false,
+        detailedDescription: 'As Co-founder and Head of E-commerce, I built Insurgo from a concept into a full-service agency. I was responsible for business development, client acquisition, and creating the operational framework. We developed scalable systems for managing multiple concurrent projects across diverse industries, from initial brand strategy and Shopify development to post-launch marketing and fulfillment operations. This venture demonstrates my leadership, entrepreneurial drive, and ability to deliver comprehensive e-commerce solutions.'
+    },
+    {
+        id: 3,
+        title: 'Variety Centre',
+        description: 'Digitized an established, multi-outlet toy store by creating their first-ever online sales channel.',
+        image: 'https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        hasLiveLink: false,
+        detailedDescription: 'This project focused on the digital transformation of a traditional brick-and-mortar retailer. I managed the complex process of cataloging hundreds of SKUs, architecting a user-friendly site structure for a wide range of product categories, and implementing an inventory management system to synchronize stock between physical and digital storefronts. This demonstrates my ability to bring legacy businesses into the modern e-commerce landscape.'
+    },
+    {
+        id: 4,
+        title: 'Ensensity',
+        description: 'Developed a premium Shopify store for a wellness and perfume brand with a focus on clean UX.',
+        image: 'https://images.pexels.com/photos/1961795/pexels-photo-1961795.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        hasLiveLink: true,
+        liveLink: 'https://ensensity.com',
+        detailedDescription: 'For Ensensity, I designed and developed a premium e-commerce experience focused on sensory storytelling and brand immersion. The project involved deep theme customization, implementing custom product visualization features, and optimizing for mobile-first performance. The intuitive navigation system I architected led to a 40% increase in user engagement and session duration, highlighting my skills in UX/UI design for niche markets.'
+    },
+    {
+        id: 5,
+        title: 'Primade',
+        description: 'Led the go-to-market strategy, managing paid social campaigns and co-directing a DVC.',
+        image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        hasLiveLink: true,
+        liveLink: 'https://drinkprimade.com',
+        detailedDescription: 'After building their Shopify store, I was contracted to orchestrate a comprehensive go-to-market strategy for Primade. This involved competitive analysis, market research, and multi-channel campaign execution. I managed a significant budget across Meta platforms (Facebook/Instagram), achieving a 3.2x ROAS while establishing initial brand awareness in the competitive F&B market. My role also included co-directing their launch DVC, showcasing my ability in creative strategy and production oversight.'
+    },
+    {
+        id: 6,
+        title: 'Sipsters (BabuBazaar)',
+        description: 'Built a vibrant, product-focused UI for a new consumer goods brand of custom tumblers.',
+        image: 'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        hasLiveLink: false,
+        detailedDescription: 'I created a youth-focused e-commerce platform for Sipsters, emphasizing product customization and social sharing features. A key part of this project was implementing an advanced product configurator allowing users to visualize their custom designs. By integrating social proof elements and optimizing the mobile checkout process, we achieved a 25% increase in conversion rates post-launch.'
+    },
+    {
+        id: 7,
+        title: 'Popcorn Media (Freelance)',
+        description: 'Provided custom development and maintenance for high-profile fashion clients of a digital agency.',
+        image: 'https://images.pexels.com/photos/325876/pexels-photo-325876.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        hasLiveLink: false,
+        detailedDescription: 'As a specialist contractor for Popcorn Media, I provided technical expertise for their premium fashion clients, Ivar Clothing and Shaad Fabrics. My responsibilities included developing custom Shopify Liquid templates for unique page layouts, implementing complex product filtering systems with Shopify Metafields, and maintaining site performance under heavy traffic loads during sales events. This role highlights my ability to collaborate effectively with agencies and deliver for established brands.'
+    },
+    {
+        id: 8,
+        title: 'Visual Transformer for LIGO Data',
+        description: 'My Final Year Project developing a ViT model to classify gravitational wave data.',
+        image: 'https://images.pexels.com/photos/2156/sky-earth-space-working.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        hasLiveLink: false,
+        detailedDescription: 'This ongoing research project involves developing a cutting-edge Visual Transformer (ViT) architecture to analyze gravitational wave data from the LIGO observatory. The work includes preprocessing complex time-series data into spectrograms, implementing self-attention mechanisms for pattern recognition, and benchmarking against traditional CNN approaches. This project demonstrates my deep interest and capability in applying state-of-the-art AI to solve complex scientific computing problems.'
+    },
+    {
+        id: 9,
+        title: 'Financial Simulation Project',
+        description: 'Implemented a Monte Carlo simulation to model PSX stock outcomes with parallel programming.',
+        image: 'https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        hasLiveLink: false,
+        detailedDescription: 'I built a sophisticated Monte Carlo simulation engine in Python for modeling Pakistan Stock Exchange (PSX) outcomes. A key achievement was implementing parallel processing algorithms which resulted in a 10x performance improvement over sequential implementations. This project showcases my skills in computational finance (FinTech), statistical modeling, and high-performance computing.'
+    },
+    {
+        id: 10,
+        title: 'IoT Network Design Project',
+        description: 'Designed an IoT security and automated fire suppression system in Cisco Packet Tracer.',
+        image: 'https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        hasLiveLink: false,
+        detailedDescription: 'For my networking course, I architected a comprehensive IoT security system integrating fire detection, automated suppression, and real-time monitoring. I designed the network topology for optimal redundancy and low latency, implemented security protocols for device authentication, and created automated response workflows. This project highlights my skills in system architecture and IoT network design.'
+    },
+    {
+        id: 11,
+        title: 'AI Smart Irrigation Bot',
+        description: 'Led hardware development and sensor integration for an Arduino-based smart irrigation bot.',
+        image: 'https://images.pexels.com/photos/159298/gears-cogs-machine-machinery-159298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        hasLiveLink: false,
+        detailedDescription: 'This project involved building an intelligent irrigation system using an Arduino microcontroller. I was responsible for the complete hardware lifecycle: selecting soil moisture and weather sensors, designing the circuitry, and integrating all components. I also contributed to the control logic that used sensor data to create predictive watering schedules. This project demonstrates my hands-on skills in embedded systems and hardware-software integration.'
+    }
+  ];
 
   // Carousel navigation functions
   const nextSlide = () => {
@@ -277,36 +280,44 @@ function App() {
       </section>
 
       {/* Projects Carousel Section */}
-      <section id="projects" className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
+      <section id="projects" className="py-20">
+        <div className="w-full mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 fade-in">
             Selected Works & Case Studies
           </h2>
           
-          <div className="relative fade-in">
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full glass-nav hover:bg-white/20 transition-all duration-300 group hidden md:block"
-            >
-              <ChevronLeft className="w-8 h-8 text-white group-hover:text-cyan-400" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full glass-nav hover:bg-white/20 transition-all duration-300 group hidden md:block"
-            >
-              <ChevronRight className="w-8 h-8 text-white group-hover:text-cyan-400" />
-            </button>
+          <div className="relative fade-in h-[700px] md:h-[650px] flex items-center justify-center">
+            {/* Carousel Track */}
+            <div className="relative w-full h-full">
+              {projects.map((project, index) => {
+                const offset = currentSlide - index;
+                const isCurrent = index === currentSlide;
+                
+                let transformStyle = `translateX(${offset * 100}%) scale(0.7) rotateY(${offset > 0 ? '' : '-'}45deg)`;
+                let opacityStyle = 'opacity-40';
+                let zIndexStyle = 'z-0';
 
-            <div className="overflow-hidden">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {projects.map((project) => (
-                  <div key={project.id} className="w-full flex-shrink-0 px-2 md:px-4">
-                    {/* NEW CLEAN LAYOUT FOR EACH SLIDE */}
+                if (isCurrent) {
+                  transformStyle = 'translateX(0) scale(1) rotateY(0deg)';
+                  opacityStyle = 'opacity-100';
+                  zIndexStyle = 'z-20';
+                } else if (index === (currentSlide - 1 + projects.length) % projects.length) {
+                  transformStyle = 'translateX(-50%) scale(0.8) rotateY(45deg)';
+                  opacityStyle = 'opacity-50';
+                  zIndexStyle = 'z-10';
+                } else if (index === (currentSlide + 1) % projects.length) {
+                  transformStyle = 'translateX(50%) scale(0.8) rotateY(-45deg)';
+                  opacityStyle = 'opacity-50';
+                  zIndexStyle = 'z-10';
+                }
+
+                return (
+                  <div 
+                    key={project.id} 
+                    className={`absolute w-full h-full transition-all duration-500 ease-in-out px-2 md:px-20 ${opacityStyle} ${zIndexStyle}`}
+                    style={{ transform: transformStyle, perspective: '1000px' }}
+                  >
                     <div className="glass-panel p-4 md:p-6 flex flex-col group h-full">
-                        {/* --- 1. Image Panel (Landscape on Desktop, Portrait on Mobile) --- */}
                         <div className="w-full h-auto rounded-2xl overflow-hidden aspect-[3/4] md:aspect-[16/9] mb-4">
                             <img
                             src={project.image}
@@ -314,26 +325,20 @@ function App() {
                             className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                             />
                         </div>
-
-                        {/* --- 2. Description Panel --- */}
                         <div className="flex-grow flex flex-col px-2">
                             <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{project.title}</h3>
                             <p className="text-white/80 text-sm md:text-base leading-relaxed mb-4">
                             {project.description}
                             </p>
                         </div>
-
-                        {/* --- 3. Links Panel (Dynamic Columns) --- */}
                         <div className="mt-auto pt-4 px-2">
                             <div className={`grid gap-4 ${project.hasLiveLink ? 'grid-cols-2' : 'grid-cols-1 place-items-center'}`}>
-                            {/* Live Site Button (conditional) */}
-                            {project.hasLiveLink && (
+                              <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className={`${!project.hasLiveLink && 'hidden'}`}>
                                 <button className="w-full text-sm md:text-base bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-4 py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
                                 <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
                                 Live Site
                                 </button>
-                            )}
-                            {/* View More Button */}
+                              </a>
                             <button 
                                 onClick={() => openModal(project)}
                                 className="w-full text-sm md:text-base border border-white/30 hover:border-cyan-400 text-white hover:text-cyan-400 font-medium px-4 py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
@@ -345,11 +350,25 @@ function App() {
                         </div>
                     </div>
                   </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
 
-            <div className="flex justify-center mt-8 space-x-2">
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full glass-nav hover:bg-white/20 transition-all duration-300 group"
+            >
+              <ChevronLeft className="w-8 h-8 text-white group-hover:text-cyan-400" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full glass-nav hover:bg-white/20 transition-all duration-300 group"
+            >
+              <ChevronRight className="w-8 h-8 text-white group-hover:text-cyan-400" />
+            </button>
+
+            <div className="absolute bottom-[-60px] w-full flex justify-center mt-8 space-x-2">
               {projects.map((_, index) => (
                 <button
                   key={index}
@@ -367,7 +386,7 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-4">
+      <section id="skills" className="py-20 mt-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="glass-panel p-8 md:p-12 fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">My Toolkit</h2>
@@ -465,10 +484,12 @@ function App() {
 
             {modalProject.hasLiveLink && (
               <div className="mt-8">
-                <button className="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 flex items-center gap-2 mx-auto">
-                  <ExternalLink className="w-5 h-5" />
-                  Visit Live Site
-                </button>
+                <a href={modalProject.liveLink} target="_blank" rel="noopener noreferrer">
+                  <button className="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 flex items-center gap-2 mx-auto">
+                    <ExternalLink className="w-5 h-5" />
+                    Visit Live Site
+                  </button>
+                </a>
               </div>
             )}
           </div>
