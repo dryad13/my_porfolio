@@ -238,9 +238,12 @@ function App() {
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center justify-center px-4">
         <div className="text-center max-w-4xl mx-auto">
-          <h1 className="hero-text text-6xl md:text-8xl font-bold mb-6 fade-in">
-            Ally Abdullah
-          </h1>
+          <h1 
+  className="hero-text text-6xl md:text-8xl font-bold mb-6 fade-in" 
+  style={{ fontFamily: 'Ethnocentric, sans-serif' }}
+>
+  Ally Abdullah
+</h1>
           <h2 className="text-xl md:text-2xl font-semibold mb-8 text-white/90 fade-in stagger-1">
             E-commerce Lead scaling brands to 4M+ PKR | Shopify Development | Digital Strategy & Marketing
           </h2>
