@@ -1,0 +1,407 @@
+/* Ethnocentric Font */
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url('./assets/fonts/ethnocentric.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom gradient background animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-bg {
+  background: transparent;
+  position: relative;
+}
+
+.gradient-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.05;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease-in-out;
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 24px 24px 0 0;
+}
+
+.glass-nav {
+  /* background: rgba(255, 255, 255, 0.08); */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.accent-glow {
+  box-shadow: 0 0 20px rgba(0, 246, 255, 0.3);
+}
+
+.skill-tag {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(0, 246, 255, 0.1);
+  border-color: rgba(0, 246, 255, 0.3);
+  color: #00F6FF;
+}
+
+html, body {
+  min-height: 100vh;
+  background-color: transparent !important;
+  color-scheme: dark;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 {
+  transition-delay: 0.1s;
+}
+
+.stagger-2 {
+  transition-delay: 0.2s;
+}
+
+.stagger-3 {
+  transition-delay: 0.3s;
+}
+
+.hero-text, .gradient-heading {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(166, 166, 166, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Line clamp utility for text truncation */
+.line-clamp-6 {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Carousel specific styles */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+/* Bento box grid styles */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  height: 200px;
+}
+
+.bento-item-large {
+  grid-column: 1;
+  grid-row: 1 / -1;
+}
+
+.bento-item-small {
+  grid-column: 2;
+}
+
+/* Enhanced glass panel for carousel items */
+.carousel-glass-panel {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease-in-out;
+}
+
+.carousel-glass-panel:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(0, 246, 255, 0.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal styles */
+.modal-backdrop {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .glass-panel {
+    border-radius: 16px;
+    margin: 0 16px;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr 1fr;
+    height: auto;
+  }
+
+  .bento-item-large {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .carousel-slide {
+    padding: 0 1rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .glass-panel:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .skill-tag:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: inherit;
+  }
+}
+
+/* Utility to remove the top line from glass-panel for icon buttons */
+.glass-panel-btn::before {
+  top: auto !important;
+  bottom: -2.2px !important;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 0 0 24px 24px;
+  display: block !important;
+  content: '';
+  position: absolute;
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(80px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 1.1s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.slide-in-left {
+  animation: slideInLeft 1.1s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.slide-up {
+  animation: slideUp 1.1s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.slide-delay-0 {
+  animation-delay: 0s;
+}
+.slide-delay-1 {
+  animation-delay: 0.2s;
+}
+.slide-delay-2 {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(60px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+.slide-down {
+  animation: slideDown 0.9s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.slide-left {
+  animation: slideLeft 0.9s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.slide-up {
+  animation: slideUp 0.9s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.slide-right {
+  animation: slideRight 0.9s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+/* Star Wars Intro Styles */
+.star-wars-container {
+  perspective: 1000px;
+  perspective-origin: center center;
+}
+
+.star-wars-text {
+  transform-style: preserve-3d;
+}
+
+.star-wars-line {
+  opacity: 0;
+  transform: rotateX(45deg) translateY(200px) scale(0.8);
+}
+
+.animate-star-wars {
+  animation: starWarsScroll 2s linear forwards;
+}
+
+@keyframes starWarsScroll {
+  0% {
+    opacity: 0;
+    transform: rotateX(45deg) translateY(200px) scale(0.8);
+  }
+  20% {
+    opacity: 1;
+    transform: rotateX(45deg) translateY(150px) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: rotateX(45deg) translateY(-100px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotateX(45deg) translateY(-200px) scale(0.8);
+  }
+}
