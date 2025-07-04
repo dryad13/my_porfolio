@@ -247,6 +247,15 @@ html, body {
     font-size: 1.1em;
     font-weight: bold;
   }
+
+  #hero h1,
+  #hero h2,
+  #hero p {
+    margin-bottom: 2rem;
+  }
+  #hero h1 {
+    margin-bottom: 2.5rem;
+  }
 }
 
 #projects .glass-panel {

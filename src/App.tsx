@@ -360,12 +360,12 @@ function MainApp() {
     trackMouse: true,
   });
 
-  // Auto-slide carousel every 2.5 seconds unless modal is open
+  // Auto-slide carousel every 3 seconds unless modal is open
   useEffect(() => {
     if (modalProject) return; // Pause auto-slide when modal is open
     const interval = setInterval(() => {
       nextSlide();
-    }, 2500);
+    }, 3000); // 3000ms speed
     return () => clearInterval(interval);
   }, [currentSlide, modalProject]);
 
@@ -507,7 +507,7 @@ function MainApp() {
               </p>
               <button 
                 onClick={() => scrollToSection('projects')}
-                className="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 accent-glow fade-in stagger-3"
+                className="glass-panel text-white border border-white/30 shadow-lg font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 accent-glow fade-in stagger-3 hover:text-cyan-400"
               >
                 View My Work
               </button>
@@ -518,25 +518,30 @@ function MainApp() {
           <section id="about" className="py-20 px-4">
             <div className="max-w-4xl mx-auto">
               <div className="glass-panel p-8 md:p-12 relative fade-in text-center">
-                <h2 className="gradient-heading text-4xl md:text-5xl font-bold mb-8 text-center font-ethnocentric">About Me</h2>
+        
                 <div className="relative flex flex-col justify-center items-center mt-6 mb-0">
-                  <img
-                    src="/images/me&sun.jpg"
-                    alt="Looking at the sunset on the beach"
-                    className="rounded-xl shadow-lg w-full max-w-full object-contain min-h-[200px]"
-                  />
-                  {/* Overlay for desktop/tablet only */}
-                  <div className="absolute inset-0 flex flex-col justify-center items-center px-2 md:px-8 hidden md:flex" style={{ transform: 'translateY(-20%)' }}>
-                    <div className="text-black font-bold text-base md:text-lg text-center w-full max-h-[80%] overflow-y-auto">
-                    <p>
-                        As a Computer Science student, I quickly came to a pivotal realization: my true passion wasn't confined to the elegance of writing code, but was ignited by the challenge of using technology as a powerful tool to build, operate, and grow entire businesses. The theoretical power of algorithms felt most profound when I could see them translate into tangible, real-world outcomes—customer engagement, sales growth, and the establishment of a vibrant brand identity. It was this desire to bridge the gap between abstract logic and concrete market impact that has defined my professional and academic journey.
-                    </p>
-                      <p className="mt-4">
-                        This practical, business-focused experience created a hunger for deeper theoretical knowledge, which I pursued aggressively in my studies at the University of Karachi. My academic projects were a deliberate effort to acquire the firepower needed to solve more complex problems, from implementing a Monte Carlo financial simulation to designing an IoT security system.
-                    </p>
-                      <p className="mt-4">
-                        My formal entry into the world of large-scale AI has been my Final Year Project: developing a Visual Transformer (ViT) model to classify gravitational wave data. This work has been the catalyst for my next professional evolution. My focus is now to pivot and apply this unique blend of skills—from hands-on business scaling to advanced AI/ML research—towards the field of Generative AI.
-                      </p>
+                  <div className="relative w-full">
+                    <img
+                      src="/images/me&sun.jpg"
+                      alt="Looking at the sunset on the beach"
+                      className="rounded-xl shadow-lg w-full max-w-full object-contain min-h-[200px]"
+                    />
+                    {/* Overlay for desktop/tablet only - heading and text over image */}
+                    <div className="absolute inset-0 flex flex-col items-center px-2 md:px-8 hidden md:flex" style={{ pointerEvents: 'none' }}>
+                      <h2 className="gradient-heading text-4xl md:text-5xl font-bold mb-4 text-center font-ethnocentric" style={{ pointerEvents: 'auto', marginTop: '24px' }}>
+                        About Me
+                      </h2>
+                      <div className="text-black font-bold text-base md:text-lg text-center w-full max-h-[70%] overflow-y-auto mt-4" style={{ pointerEvents: 'auto' }}>
+                        <p>
+                          As a Computer Science student, I quickly came to a pivotal realization: my true passion wasn't confined to the elegance of writing code, but was ignited by the challenge of using technology as a powerful tool to build, operate, and grow entire businesses. The theoretical power of algorithms felt most profound when I could see them translate into tangible, real-world outcomes—customer engagement, sales growth, and the establishment of a vibrant brand identity. It was this desire to bridge the gap between abstract logic and concrete market impact that has defined my professional and academic journey.
+                        </p>
+                        <p className="mt-4">
+                          This practical, business-focused experience created a hunger for deeper theoretical knowledge, which I pursued aggressively in my studies at the University of Karachi. My academic projects were a deliberate effort to acquire the firepower needed to solve more complex problems, from implementing a Monte Carlo financial simulation to designing an IoT security system.
+                        </p>
+                        <p className="mt-4">
+                          My formal entry into the world of large-scale AI has been my Final Year Project: developing a Visual Transformer (ViT) model to classify gravitational wave data. This work has been the catalyst for my next professional evolution. My focus is now to pivot and apply this unique blend of skills—from hands-on business scaling to advanced AI/ML research—towards the field of Generative AI.
+                        </p>
+                      </div>
                     </div>
                   </div>
                   {/* Stacked text for mobile only */}
