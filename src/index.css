@@ -217,6 +217,13 @@ html, body {
     margin: 0 16px;
   }
   
+  /* Mobile navigation adjustments */
+  .glass-nav {
+    padding: 0.5rem 0.75rem !important;
+    min-width: 320px;
+    max-width: 95vw;
+  }
+  
   .project-card:hover {
     transform: translateY(-4px) scale(1.01);
   }
@@ -443,4 +450,88 @@ html, body {
 
 .glass-panel-bright {
   filter: brightness(1.25);
+}
+
+/* ChatBot Styles */
+.chat-message {
+  animation: slideInMessage 0.3s ease-out;
+}
+
+@keyframes slideInMessage {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom scrollbar for chat */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Chat input focus styles */
+.chat-input:focus {
+  box-shadow: 0 0 0 2px rgba(0, 246, 255, 0.3);
+}
+
+/* Mobile optimizations for chat */
+@media (max-width: 768px) {
+  .chat-window {
+    width: calc(100vw - 2rem);
+    height: calc(100vh - 8rem);
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+  
+  .chat-toggle {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  /* Chat section mobile optimizations */
+  #chat .glass-panel {
+    padding: 1.5rem;
+  }
+
+  #chat h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  #chat .messages-container {
+    height: 20rem;
+  }
+}
+
+/* Extra small mobile optimizations */
+@media (max-width: 480px) {
+  .glass-nav {
+    min-width: 280px;
+    padding: 0.5rem !important;
+  }
+  
+  /* Make mobile nav buttons slightly smaller on very small screens */
+  .glass-nav button {
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+  }
 }

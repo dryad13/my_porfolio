@@ -4,6 +4,7 @@ import Star from './components/StarField';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import StarOnly from './pages/StarOnly';
 import { useSwipeable } from 'react-swipeable';
+import ChatBot from './components/ChatBot';
 
 // Main App Component
 function App() {
@@ -66,7 +67,7 @@ function MainApp() {
   useEffect(() => {
     // Function to determine which section is currently in view
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'projects', 'skills', 'contact'];
+      const sections = ['hero', 'about', 'projects', 'skills', 'contact', 'chat'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -469,14 +470,16 @@ function MainApp() {
         <div className="gradient-bg min-h-screen text-white">
           {/* Navigation */}
           <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
-            <div className="glass-nav px-6 py-3">
-              <div className="flex space-x-8">
+            <div className="glass-nav px-4 md:px-6 py-3">
+              {/* Desktop Navigation */}
+              <div className="hidden md:flex space-x-6 lg:space-x-8">
                 {[
                   { id: 'hero', label: 'Home' },
                   { id: 'about', label: 'About' },
                   { id: 'projects', label: 'Projects' },
                   { id: 'skills', label: 'Skills' },
-                  { id: 'contact', label: 'Contact' }
+                  { id: 'contact', label: 'Contact' },
+                  { id: 'chat', label: 'Chat' }
                 ].map((item) => (
                   <button
                     key={item.id}
@@ -486,6 +489,31 @@ function MainApp() {
                     }`}
                   >
                     {item.label}
+                  </button>
+                ))}
+              </div>
+              
+              {/* Mobile Navigation - Compact with icons */}
+              <div className="flex md:hidden space-x-3">
+                {[
+                  { id: 'hero', label: 'Home', icon: '🏠' },
+                  { id: 'about', label: 'About', icon: '👤' },
+                  { id: 'projects', label: 'Work', icon: '💼' },
+                  { id: 'skills', label: 'Skills', icon: '⚡' },
+                  { id: 'contact', label: 'Contact', icon: '📧' },
+                  { id: 'chat', label: 'Chat', icon: '💬' }
+                ].map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`flex flex-col items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 ${
+                      activeSection === item.id 
+                        ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-400/30' 
+                        : 'text-white/80 hover:text-cyan-400 hover:bg-white/10'
+                    }`}
+                    title={item.label}
+                  >
+                    <span className="text-xs leading-none">{item.icon}</span>
                   </button>
                 ))}
               </div>
@@ -875,6 +903,9 @@ function MainApp() {
               </div>
             </div>
           </section>
+
+          {/* ChatBot Section */}
+          <ChatBot />
 
           {/* Footer */}
           <footer className="py-8 text-center text-white/60 border-t border-white/10 mt-16">
