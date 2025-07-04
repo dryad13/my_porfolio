@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import '../components/Starfield.css';
+import '../components/StarField.css';
 
 interface ParallaxStar {
   id: string;
