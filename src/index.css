@@ -49,7 +49,7 @@
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.0625);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -189,7 +189,7 @@ html, body {
 
 /* Enhanced glass panel for carousel items */
 .carousel-glass-panel {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -199,7 +199,7 @@ html, body {
 }
 
 .carousel-glass-panel:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.32);
   border-color: rgba(0, 246, 255, 0.3);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
 }
@@ -235,6 +235,23 @@ html, body {
   .carousel-slide {
     padding: 0 1rem;
   }
+
+  .carousel-glass-panel {
+    background: rgba(255, 255, 255, 0.32);
+  }
+  .carousel-glass-panel:hover {
+    background: rgba(255, 255, 255, 0.40);
+  }
+
+  #projects .glass-panel {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+}
+
+#projects .glass-panel {
+  font-size: 1.1em;
+  font-weight: bold;
 }
 
 /* Touch device optimizations */
@@ -405,4 +422,16 @@ html, body {
     opacity: 0;
     transform: rotateX(45deg) translateY(-200px) scale(0.8);
   }
+}
+
+.glass-panel-focused {
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+.glass-panel-dim {
+  filter: brightness(0.5);
+}
+
+.glass-panel-bright {
+  filter: brightness(1.25);
 }

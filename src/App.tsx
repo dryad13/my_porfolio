@@ -7,6 +7,19 @@ import { useSwipeable } from 'react-swipeable';
 
 // Main App Component
 function App() {
+  const [fontLoaded, setFontLoaded] = useState(false);
+
+  useEffect(() => {
+    document.fonts.load('1em "ethnocentric"').then(() => {
+      setFontLoaded(true);
+    });
+  }, []);
+
+  if (!fontLoaded) {
+    // Optionally show a loading spinner or blank screen
+    return <div style={{ background: "black", height: "100vh" }} />;
+  }
+
   return (
     <Router>
       <Routes>
@@ -41,6 +54,7 @@ function MainApp() {
   // State for Star Wars intro animation
   const [showIntro, setShowIntro] = useState(true);
   const [currentLine, setCurrentLine] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   
   const introTexts = [
     "Hi!",
@@ -414,7 +428,12 @@ function MainApp() {
     window.scrollTo(0, 0);
   }, []);
 
-
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <>
@@ -594,8 +613,8 @@ function MainApp() {
                         className={`absolute w-full h-full transition-all duration-500 ease-in-out ${opacityStyle} ${zIndexStyle}`}
                         style={{ transform: transformStyle, transformStyle: 'preserve-3d' }}
                       >
-                        <div className="w-full md:w-3/4 lg:w-1/2 h-full mx-auto">
-                          <div className="glass-panel p-4 md:p-6 flex flex-col group h-full">
+                        <div className={`w-full md:w-3/4 lg:w-1/2 h-full mx-auto`}>
+                          <div className={`glass-panel p-4 md:p-6 flex flex-col group h-full ${isMobile && isCurrent ? 'glass-panel-bright' : ''} ${isMobile && !isCurrent ? 'glass-panel-dim' : ''}`}>
                               <div className="w-full h-auto rounded-2xl overflow-hidden aspect-[3/4] md:aspect-[16/9] mb-4 max-h-[350px] md:max-h-none mx-auto">
                                   <picture>
                                     <source media="(max-width: 767px)" srcSet={project.images.portrait} />
