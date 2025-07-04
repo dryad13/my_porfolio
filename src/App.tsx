@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { ChevronDown, Mail, Github, Linkedin, ExternalLink, ChevronLeft, ChevronRight, X, Instagram } from 'lucide-react';
-import Star from './components/Starfield';
+import Star from './components/StarField';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import StarOnly from './pages/StarOnly';
 import { useSwipeable } from 'react-swipeable';
