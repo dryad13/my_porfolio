@@ -157,7 +157,7 @@ const ChatBot: React.FC = () => {
             </div>
 
             {/* Input Area */}
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <input
                 ref={inputRef}
                 type="text"
@@ -171,7 +171,7 @@ const ChatBot: React.FC = () => {
               <button
                 onClick={sendMessage}
                 disabled={!inputValue.trim() || isLoading}
-                className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 disabled:bg-white/20 disabled:cursor-not-allowed text-black rounded-xl transition-colors font-semibold flex items-center gap-2"
+                className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 disabled:bg-white/20 disabled:cursor-not-allowed text-black rounded-xl transition-colors font-semibold flex items-center justify-center gap-2 sm:w-auto w-full"
               >
                 <Send className="w-5 h-5" />
                 Send

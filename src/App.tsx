@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { ChevronDown, Mail, Github, Linkedin, ExternalLink, ChevronLeft, ChevronRight, X, Instagram } from 'lucide-react';
+import { ChevronDown, Mail, Github, Linkedin, ExternalLink, ChevronLeft, ChevronRight, X, Instagram, Home, User, Briefcase, Zap, MessageCircle } from 'lucide-react';
 import Star from './components/StarField';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import StarOnly from './pages/StarOnly';
@@ -52,6 +52,8 @@ function MainApp() {
   // Toolkit quadrant animation state
   const [toolkitInView, setToolkitInView] = useState(false);
   const toolkitRef = useRef<HTMLDivElement>(null);
+  // Mobile skills collapsible state
+  const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
   // State for Star Wars intro animation
   const [showIntro, setShowIntro] = useState(true);
   const [currentLine, setCurrentLine] = useState(0);
@@ -496,26 +498,29 @@ function MainApp() {
               {/* Mobile Navigation - Compact with icons */}
               <div className="flex md:hidden space-x-3">
                 {[
-                  { id: 'hero', label: 'Home', icon: '🏠' },
-                  { id: 'about', label: 'About', icon: '👤' },
-                  { id: 'projects', label: 'Work', icon: '💼' },
-                  { id: 'skills', label: 'Skills', icon: '⚡' },
-                  { id: 'contact', label: 'Contact', icon: '📧' },
-                  { id: 'chat', label: 'Chat', icon: '💬' }
-                ].map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`flex flex-col items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 ${
-                      activeSection === item.id 
-                        ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-400/30' 
-                        : 'text-white/80 hover:text-cyan-400 hover:bg-white/10'
-                    }`}
-                    title={item.label}
-                  >
-                    <span className="text-xs leading-none">{item.icon}</span>
-                  </button>
-                ))}
+                  { id: 'hero', label: 'Home', icon: Home },
+                  { id: 'about', label: 'About', icon: User },
+                  { id: 'projects', label: 'Work', icon: Briefcase },
+                  { id: 'skills', label: 'Skills', icon: Zap },
+                  { id: 'contact', label: 'Contact', icon: Mail },
+                  { id: 'chat', label: 'Chat', icon: MessageCircle }
+                ].map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className={`flex flex-col items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 ${
+                        activeSection === item.id 
+                          ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-400/30' 
+                          : 'text-white/80 hover:text-cyan-400 hover:bg-white/10'
+                      }`}
+                      title={item.label}
+                    >
+                      <IconComponent className="w-4 h-4" />
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </nav>
@@ -570,6 +575,12 @@ function MainApp() {
                           My formal entry into the world of large-scale AI has been my Final Year Project: developing a Visual Transformer (ViT) model to classify gravitational wave data. This work has been the catalyst for my next professional evolution. My focus is now to pivot and apply this unique blend of skills—from hands-on business scaling to advanced AI/ML research—towards the field of Generative AI.
                         </p>
                       </div>
+                    </div>
+                    {/* Mobile: About Me heading and stacked text */}
+                    <div className="absolute inset-0 flex flex-col items-center px-2 md:px-8 md:hidden" style={{ pointerEvents: 'none' }}>
+                      <h2 className="gradient-heading text-3xl font-bold mb-2 text-center font-ethnocentric mt-6" style={{ pointerEvents: 'auto' }}>
+                        About Me
+                      </h2>
                     </div>
                   </div>
                   {/* Stacked text for mobile only */}
@@ -743,8 +754,16 @@ function MainApp() {
                 <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-8 text-center">
                   {/* Upper Left: E-commerce & Strategy */}
                   <div className={`text-center ${toolkitInView ? 'slide-down' : 'opacity-0'} md:row-start-1 md:col-start-1`}>
-                    <h3 className="text-xl font-semibold mb-4 text-cyan-400 text-center font-ethnocentric">E-commerce & Strategy</h3>
-                    <div className="space-y-3 text-center">
+                    <button 
+                      onClick={() => setExpandedSkill(expandedSkill === 'E-commerce & Strategy' ? null : 'E-commerce & Strategy')}
+                      className="w-full text-left mb-4 group"
+                    >
+                      <h3 className="text-xl font-semibold text-cyan-400 text-center font-ethnocentric group-hover:text-cyan-300 transition-colors flex items-center justify-center gap-2">
+                        E-commerce & Strategy
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 md:hidden ${expandedSkill === 'E-commerce & Strategy' ? 'rotate-180' : ''}`} />
+                      </h3>
+                    </button>
+                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${expandedSkill === 'E-commerce & Strategy' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden md:max-h-none md:opacity-100'}`}>
                       {skills['E-commerce & Strategy'].map((skill) => (
                         <div key={skill.name} className="skill-tag text-center">
                           <div className="flex items-center w-full">
@@ -763,8 +782,16 @@ function MainApp() {
                   </div>
                   {/* Upper Right: AI & Data Science */}
                   <div className={`text-center ${toolkitInView ? 'slide-left' : 'opacity-0'} md:row-start-1 md:col-start-2`}>
-                    <h3 className="text-xl font-semibold mb-4 text-cyan-400 text-center font-ethnocentric">AI & Data Science</h3>
-                    <div className="space-y-3 text-center">
+                    <button 
+                      onClick={() => setExpandedSkill(expandedSkill === 'AI & Data Science' ? null : 'AI & Data Science')}
+                      className="w-full text-left mb-4 group"
+                    >
+                      <h3 className="text-xl font-semibold text-cyan-400 text-center font-ethnocentric group-hover:text-cyan-300 transition-colors flex items-center justify-center gap-2">
+                        AI & Data Science
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 md:hidden ${expandedSkill === 'AI & Data Science' ? 'rotate-180' : ''}`} />
+                      </h3>
+                    </button>
+                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${expandedSkill === 'AI & Data Science' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden md:max-h-none md:opacity-100'}`}>
                       {skills['AI & Data Science'].map((skill) => (
                         <div key={skill.name} className="skill-tag text-center">
                           <div className="flex items-center w-full">
@@ -783,8 +810,16 @@ function MainApp() {
                   </div>
                   {/* Lower Right: Digital Marketing */}
                   <div className={`text-center ${toolkitInView ? 'slide-up' : 'opacity-0'} md:row-start-2 md:col-start-2`}>
-                    <h3 className="text-xl font-semibold mb-4 text-cyan-400 text-center font-ethnocentric">Digital Marketing</h3>
-                    <div className="space-y-3 text-center">
+                    <button 
+                      onClick={() => setExpandedSkill(expandedSkill === 'Digital Marketing' ? null : 'Digital Marketing')}
+                      className="w-full text-left mb-4 group"
+                    >
+                      <h3 className="text-xl font-semibold text-cyan-400 text-center font-ethnocentric group-hover:text-cyan-300 transition-colors flex items-center justify-center gap-2">
+                        Digital Marketing
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 md:hidden ${expandedSkill === 'Digital Marketing' ? 'rotate-180' : ''}`} />
+                      </h3>
+                    </button>
+                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${expandedSkill === 'Digital Marketing' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden md:max-h-none md:opacity-100'}`}>
                       {skills['Digital Marketing'].map((skill) => (
                         skill.name === 'Meta Business Suite'
                           ? <div
@@ -820,8 +855,16 @@ function MainApp() {
                   </div>
                   {/* Lower Left: Development */}
                   <div className={`text-center ${toolkitInView ? 'slide-right' : 'opacity-0'} md:row-start-2 md:col-start-1`}>
-                    <h3 className="text-xl font-semibold mb-4 text-cyan-400 text-center font-ethnocentric">Development</h3>
-                    <div className="space-y-3 text-center">
+                    <button 
+                      onClick={() => setExpandedSkill(expandedSkill === 'Development' ? null : 'Development')}
+                      className="w-full text-left mb-4 group"
+                    >
+                      <h3 className="text-xl font-semibold text-cyan-400 text-center font-ethnocentric group-hover:text-cyan-300 transition-colors flex items-center justify-center gap-2">
+                        Development
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 md:hidden ${expandedSkill === 'Development' ? 'rotate-180' : ''}`} />
+                      </h3>
+                    </button>
+                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${expandedSkill === 'Development' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden md:max-h-none md:opacity-100'}`}>
                       {skills['Development'].map((skill) => (
                         skill.name === 'AWS (Certified)'
                           ? <div
