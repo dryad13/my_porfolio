@@ -532,8 +532,11 @@ function MainApp() {
               <h1 className="hero-text gradient-heading w-full max-w-full break-words text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 fade-in font-ethnocentric text-center px-2">
                 Ally Abdullah
               </h1>
-              <h2 className="text-xl md:text-2xl font-semibold mb-8 text-white/90 fade-in stagger-1">
-                E-commerce Lead scaling brands to 4M+ PKR | Shopify Development | Digital Strategy & Marketing
+              <h2 className="text-xl md:text-2xl font-bold mb-8 text-cyan-400 fade-in stagger-1">
+                A-Commerce: AI-Driven E-commerce Solutions
+              </h2>
+              <h2 className="text-xl md:text-2xl font-bold mb-8 text-cyan-400 fade-in stagger-1">
+                E-commerce Lead helping brands achieve 4M+ PKR in revenue | Shopify Development & Digital Strategy
               </h2>
               <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-12 text-white/80 fade-in stagger-2">
                 I build robust digital experiences that bridge the gap between complex technology and real-world business growth. Currently pivoting my focus towards the future of Generative AI.
@@ -712,21 +715,6 @@ function MainApp() {
                     );
                   })}
                 </div>
-                {/* Navigation Arrows */}
-                <button
-                  onClick={prevSlide}
-                  className="absolute left-0 md:left-12 lg:left-24 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full glass-nav hover:bg-white/20 transition-all duration-300 group"
-                  style={{ pointerEvents: 'auto' }}
-                >
-                  <ChevronLeft className="w-8 h-8 text-white group-hover:text-cyan-400" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="absolute right-0 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full glass-nav hover:bg-white/20 transition-all duration-300 group"
-                  style={{ pointerEvents: 'auto' }}
-                >
-                  <ChevronRight className="w-8 h-8 text-white group-hover:text-cyan-400" />
-                </button>
 
                 <div className="absolute bottom-[-60px] w-full flex justify-center mt-8 space-x-2">
                   {projects.map((_, index) => (
