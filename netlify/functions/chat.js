@@ -127,6 +127,13 @@ These examples are for internalizing my voice. Do not repeat them verbatim.
     const data = await response.json();
     const botResponse = data.choices[0].message.content;
 
+    // Booking intent detection
+    let finalResponse = botResponse;
+    const bookingKeywords = ['meeting', 'book', 'schedule', 'call', 'appointment'];
+    if (bookingKeywords.some(word => message.toLowerCase().includes(word))) {
+      finalResponse += ' [BOOK_MEETING]';
+    }
+
     return {
       statusCode: 200,
       headers: {
@@ -136,7 +143,7 @@ These examples are for internalizing my voice. Do not repeat them verbatim.
         'Access-Control-Allow-Methods': 'POST, OPTIONS'
       },
       body: JSON.stringify({
-        response: botResponse
+        response: finalResponse
       })
     };
 
