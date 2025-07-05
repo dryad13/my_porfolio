@@ -13,7 +13,7 @@ const ChatBot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hey there! I'm Ally. What's on your mind? I can tell you about my work scaling e-commerce brands, my pivot into AI, or anything else about my journey. What would you like to know?",
+      text: "Hey! I'm Ally 💪 I turn e-commerce scaling headaches into growth wins using AI. If you're serious about scaling, let's hop on a call and see if I can help you crush your goals!",
       sender: 'bot',
       timestamp: new Date()
     }
