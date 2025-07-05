@@ -758,7 +758,7 @@ function MainApp() {
                       onClick={() => setExpandedSkill(expandedSkill === 'E-commerce & Strategy' ? null : 'E-commerce & Strategy')}
                       className="w-full text-left mb-4 group"
                     >
-                      <h3 className="text-xl font-semibold text-cyan-400 text-center font-ethnocentric group-hover:text-cyan-300 transition-colors flex items-center justify-center gap-2">
+                      <h3 className="text-xl font-semibold text-cyan-400 font-ethnocentric group-hover:text-cyan-300 transition-colors w-full flex justify-between items-center md:justify-center md:gap-2">
                         E-commerce & Strategy
                         <ChevronDown className={`w-5 h-5 transition-transform duration-300 md:hidden ${expandedSkill === 'E-commerce & Strategy' ? 'rotate-180' : ''}`} />
                       </h3>
@@ -786,7 +786,7 @@ function MainApp() {
                       onClick={() => setExpandedSkill(expandedSkill === 'AI & Data Science' ? null : 'AI & Data Science')}
                       className="w-full text-left mb-4 group"
                     >
-                      <h3 className="text-xl font-semibold text-cyan-400 text-center font-ethnocentric group-hover:text-cyan-300 transition-colors flex items-center justify-center gap-2">
+                      <h3 className="text-xl font-semibold text-cyan-400 font-ethnocentric group-hover:text-cyan-300 transition-colors w-full flex justify-between items-center md:justify-center md:gap-2">
                         AI & Data Science
                         <ChevronDown className={`w-5 h-5 transition-transform duration-300 md:hidden ${expandedSkill === 'AI & Data Science' ? 'rotate-180' : ''}`} />
                       </h3>
@@ -814,7 +814,7 @@ function MainApp() {
                       onClick={() => setExpandedSkill(expandedSkill === 'Digital Marketing' ? null : 'Digital Marketing')}
                       className="w-full text-left mb-4 group"
                     >
-                      <h3 className="text-xl font-semibold text-cyan-400 text-center font-ethnocentric group-hover:text-cyan-300 transition-colors flex items-center justify-center gap-2">
+                      <h3 className="text-xl font-semibold text-cyan-400 font-ethnocentric group-hover:text-cyan-300 transition-colors w-full flex justify-between items-center md:justify-center md:gap-2">
                         Digital Marketing
                         <ChevronDown className={`w-5 h-5 transition-transform duration-300 md:hidden ${expandedSkill === 'Digital Marketing' ? 'rotate-180' : ''}`} />
                       </h3>
@@ -859,7 +859,7 @@ function MainApp() {
                       onClick={() => setExpandedSkill(expandedSkill === 'Development' ? null : 'Development')}
                       className="w-full text-left mb-4 group"
                     >
-                      <h3 className="text-xl font-semibold text-cyan-400 text-center font-ethnocentric group-hover:text-cyan-300 transition-colors flex items-center justify-center gap-2">
+                      <h3 className="text-xl font-semibold text-cyan-400 font-ethnocentric group-hover:text-cyan-300 transition-colors w-full flex justify-between items-center md:justify-center md:gap-2">
                         Development
                         <ChevronDown className={`w-5 h-5 transition-transform duration-300 md:hidden ${expandedSkill === 'Development' ? 'rotate-180' : ''}`} />
                       </h3>
