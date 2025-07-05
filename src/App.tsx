@@ -758,12 +758,16 @@ function MainApp() {
                       onClick={() => setExpandedSkill(expandedSkill === 'E-commerce & Strategy' ? null : 'E-commerce & Strategy')}
                       className="w-full text-left mb-4 group"
                     >
-                      <h3 className="text-xl font-semibold text-cyan-400 font-ethnocentric group-hover:text-cyan-300 transition-colors w-full flex justify-between items-center md:justify-center md:gap-2">
+                      <h3 className="text-xl font-semibold text-cyan-400 font-ethnocentric group-hover:text-cyan-300 transition-colors w-full flex flex-col items-center text-center">
                         E-commerce & Strategy
-                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 md:hidden ${expandedSkill === 'E-commerce & Strategy' ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-5 h-5 mt-1 transition-transform duration-300 md:hidden ${expandedSkill === 'E-commerce & Strategy' ? 'rotate-180' : ''}`} />
                       </h3>
                     </button>
-                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${expandedSkill === 'E-commerce & Strategy' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden md:max-h-none md:opacity-100'}`}>
+                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${
+                      expandedSkill === 'E-commerce & Strategy'
+                        ? 'max-h-[1000px] opacity-100'
+                        : 'max-h-0 opacity-0 overflow-hidden'
+                    } md:max-h-none md:opacity-100`}>
                       {skills['E-commerce & Strategy'].map((skill) => (
                         <div key={skill.name} className="skill-tag text-center">
                           <div className="flex items-center w-full">
@@ -786,12 +790,16 @@ function MainApp() {
                       onClick={() => setExpandedSkill(expandedSkill === 'AI & Data Science' ? null : 'AI & Data Science')}
                       className="w-full text-left mb-4 group"
                     >
-                      <h3 className="text-xl font-semibold text-cyan-400 font-ethnocentric group-hover:text-cyan-300 transition-colors w-full flex justify-between items-center md:justify-center md:gap-2">
+                      <h3 className="text-xl font-semibold text-cyan-400 font-ethnocentric group-hover:text-cyan-300 transition-colors w-full flex flex-col items-center text-center">
                         AI & Data Science
-                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 md:hidden ${expandedSkill === 'AI & Data Science' ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-5 h-5 mt-1 transition-transform duration-300 md:hidden ${expandedSkill === 'AI & Data Science' ? 'rotate-180' : ''}`} />
                       </h3>
                     </button>
-                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${expandedSkill === 'AI & Data Science' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden md:max-h-none md:opacity-100'}`}>
+                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${
+                      expandedSkill === 'AI & Data Science'
+                        ? 'max-h-[1000px] opacity-100'
+                        : 'max-h-0 opacity-0 overflow-hidden'
+                    } md:max-h-none md:opacity-100`}>
                       {skills['AI & Data Science'].map((skill) => (
                         <div key={skill.name} className="skill-tag text-center">
                           <div className="flex items-center w-full">
@@ -814,12 +822,16 @@ function MainApp() {
                       onClick={() => setExpandedSkill(expandedSkill === 'Digital Marketing' ? null : 'Digital Marketing')}
                       className="w-full text-left mb-4 group"
                     >
-                      <h3 className="text-xl font-semibold text-cyan-400 font-ethnocentric group-hover:text-cyan-300 transition-colors w-full flex justify-between items-center md:justify-center md:gap-2">
+                      <h3 className="text-xl font-semibold text-cyan-400 font-ethnocentric group-hover:text-cyan-300 transition-colors w-full flex flex-col items-center text-center">
                         Digital Marketing
-                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 md:hidden ${expandedSkill === 'Digital Marketing' ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-5 h-5 mt-1 transition-transform duration-300 md:hidden ${expandedSkill === 'Digital Marketing' ? 'rotate-180' : ''}`} />
                       </h3>
                     </button>
-                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${expandedSkill === 'Digital Marketing' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden md:max-h-none md:opacity-100'}`}>
+                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${
+                      expandedSkill === 'Digital Marketing'
+                        ? 'max-h-[1000px] opacity-100'
+                        : 'max-h-0 opacity-0 overflow-hidden'
+                    } md:max-h-none md:opacity-100`}>
                       {skills['Digital Marketing'].map((skill) => (
                         skill.name === 'Meta Business Suite'
                           ? <div
@@ -859,12 +871,16 @@ function MainApp() {
                       onClick={() => setExpandedSkill(expandedSkill === 'Development' ? null : 'Development')}
                       className="w-full text-left mb-4 group"
                     >
-                      <h3 className="text-xl font-semibold text-cyan-400 font-ethnocentric group-hover:text-cyan-300 transition-colors w-full flex justify-between items-center md:justify-center md:gap-2">
+                      <h3 className="text-xl font-semibold text-cyan-400 font-ethnocentric group-hover:text-cyan-300 transition-colors w-full flex flex-col items-center text-center">
                         Development
-                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 md:hidden ${expandedSkill === 'Development' ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-5 h-5 mt-1 transition-transform duration-300 md:hidden ${expandedSkill === 'Development' ? 'rotate-180' : ''}`} />
                       </h3>
                     </button>
-                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${expandedSkill === 'Development' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden md:max-h-none md:opacity-100'}`}>
+                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${
+                      expandedSkill === 'Development'
+                        ? 'max-h-[1000px] opacity-100'
+                        : 'max-h-0 opacity-0 overflow-hidden'
+                    } md:max-h-none md:opacity-100`}>
                       {skills['Development'].map((skill) => (
                         skill.name === 'AWS (Certified)'
                           ? <div
