@@ -21,8 +21,7 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 
 ## Deployment
 
-This portfolio is deployed and ready for viewing!
+ Portfolio is deployed and ready for viewing!
 
 ---
 
-*Updated for deployment fix*
