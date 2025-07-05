@@ -129,12 +129,14 @@ const ChatBot: React.FC = () => {
                             <p className="text-sm leading-relaxed mb-3">
                               {message.text.replace('[BOOK_MEETING]', '')}
                             </p>
-                            <button
-                              onClick={() => setShowCalendlyModal(true)}
+                            <a
+                              href="https://calendly.com/allyabdullah99/30min?background_color=000000&text_color=ffffff&primary_color=00fff7"
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="inline-block px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold hover:bg-cyan-400 transition-colors text-sm"
                             >
                               Book a Meeting
-                            </button>
+                            </a>
                           </div>
                         ) : (
                           <p className="text-sm leading-relaxed">{message.text}</p>
