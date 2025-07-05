@@ -100,7 +100,7 @@ const ChatBot: React.FC = () => {
             Or if you'd prefer to talk to me now that you're already here...
           </h2>
           <p className="text-lg md:text-xl mb-8 text-white/80 text-center max-w-2xl mx-auto leading-relaxed">
-            Ask me anything about my work, projects, or thoughts on technology and business. I would love to chat!
+            Ask me anything about my work, projects, or thoughts on technology and business.You can also book a meeting with me, I would love to chat!
           </p>
           
           {/* Chat Interface */}
