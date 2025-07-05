@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User } from 'lucide-react';
+import { InlineWidget } from 'react-calendly';
 
 interface Message {
   id: string;
@@ -19,6 +20,7 @@ const ChatBot: React.FC = () => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showCalendlyModal, setShowCalendlyModal] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -122,7 +124,21 @@ const ChatBot: React.FC = () => {
                         <Bot className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
                       )}
                       <div className="flex-1">
-                        <p className="text-sm leading-relaxed">{message.text}</p>
+                        {message.text.includes('[BOOK_MEETING]') ? (
+                          <div>
+                            <p className="text-sm leading-relaxed mb-3">
+                              {message.text.replace('[BOOK_MEETING]', '')}
+                            </p>
+                            <button
+                              onClick={() => setShowCalendlyModal(true)}
+                              className="inline-block px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold hover:bg-cyan-400 transition-colors text-sm"
+                            >
+                              Book a Meeting
+                            </button>
+                          </div>
+                        ) : (
+                          <p className="text-sm leading-relaxed">{message.text}</p>
+                        )}
                         <p className="text-xs opacity-60 mt-1">
                           {message.timestamp.toLocaleTimeString([], { 
                             hour: '2-digit', 
@@ -180,6 +196,35 @@ const ChatBot: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Calendly Modal */}
+      {showCalendlyModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="glass-panel border border-white/20 rounded-2xl p-0 w-full max-w-[420px] md:max-w-[650px] mx-auto overflow-hidden relative shadow-2xl flex flex-col items-center justify-center" style={{background: 'rgba(20, 20, 20, 0.95)'}}>
+            <button
+              onClick={() => setShowCalendlyModal(false)}
+              className="absolute top-4 right-4 text-white/80 hover:text-cyan-400 text-2xl font-bold z-10 bg-black/40 hover:bg-black/60 rounded-full w-8 h-8 flex items-center justify-center transition-colors backdrop-blur-sm"
+              aria-label="Close"
+            >
+              ×
+            </button>
+            <div className="w-full flex items-center justify-center p-0 m-0">
+              <InlineWidget 
+                url="https://calendly.com/allyabdullah99/30min?background_color=000000&text_color=ffffff&primary_color=00fff7"
+                styles={{
+                  width: '100%',
+                  minWidth: '320px',
+                  minHeight: '600px',
+                  border: 'none',
+                  padding: 0,
+                  margin: 0,
+                  background: 'transparent'
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
