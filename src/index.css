@@ -521,7 +521,11 @@ html, body {
     height: 20rem;
   }
 }
-
+@media (max-width: 768px) {
+  #chat p.text-lg {
+    font-size: 0.95rem !important;
+  }
+}
 /* Extra small mobile optimizations */
 @media (max-width: 480px) {
   .glass-nav {
