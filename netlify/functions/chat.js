@@ -40,7 +40,7 @@ exports.handler = async (event, context) => {
         'X-Title': 'Ally Abdullah Portfolio Chat'
       },
       body: JSON.stringify({
-        model: 'qwen/qwen3-14b:free',
+        model: 'deepseek/deepseek-r1-distill-llama-70b:free',
         messages: [
           {
             role: 'system',
