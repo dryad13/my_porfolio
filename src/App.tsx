@@ -652,7 +652,10 @@ function MainApp() {
                   {projects.map((project, index) => {
                     const offset = currentSlide - index;
                     const isCurrent = index === currentSlide;
-                    
+                    const prevIndex = (currentSlide - 1 + projects.length) % projects.length;
+                    const nextIndex = (currentSlide + 1) % projects.length;
+                    const isNeighbor = isCurrent || index === prevIndex || index === nextIndex;
+
                     let transformStyle = `translateX(${offset * 100}%) scale(0.7) rotateY(${offset > 0 ? '' : '-'}45deg)`;
                     let opacityStyle = 'opacity-0';
                     let zIndexStyle = 'z-0';
@@ -661,20 +664,24 @@ function MainApp() {
                       transformStyle = 'translateX(0) scale(1) rotateY(0deg)';
                       opacityStyle = 'opacity-100';
                       zIndexStyle = 'z-20';
-                    } else if (index === (currentSlide - 1 + projects.length) % projects.length) {
+                    } else if (index === prevIndex) {
                       transformStyle = 'translateX(-55%) scale(0.8) rotateY(45deg)';
                       opacityStyle = 'opacity-50';
                       zIndexStyle = 'z-10';
-                    } else if (index === (currentSlide + 1) % projects.length) {
+                    } else if (index === nextIndex) {
                       transformStyle = 'translateX(55%) scale(0.8) rotateY(-45deg)';
                       opacityStyle = 'opacity-50';
                       zIndexStyle = 'z-10';
                     }
 
+                    const transitionClasses = isNeighbor
+                      ? 'transition-all duration-500 ease-in-out'
+                      : 'transition-none';
+
                     return (
-                      <div 
-                        key={project.title} 
-                        className={`absolute w-full h-full transition-all duration-500 ease-in-out ${opacityStyle} ${zIndexStyle}`}
+                      <div
+                        key={project.title}
+                        className={`absolute w-full h-full ${transitionClasses} ${opacityStyle} ${zIndexStyle}`}
                         style={{ transform: transformStyle, transformStyle: 'preserve-3d' }}
                       >
                         <div className={`w-full md:w-3/4 lg:w-1/2 h-full mx-auto`}>
