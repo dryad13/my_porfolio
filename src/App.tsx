@@ -768,9 +768,9 @@ function MainApp() {
                         <ChevronDown className={`w-5 h-5 mt-1 transition-transform duration-300 md:hidden ${expandedSkill === 'E-commerce & Strategy' ? 'rotate-180' : ''}`} />
                       </h3>
                     </button>
-                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${
+                    <div className={`space-y-3 text-center transition-[max-height] duration-300 md:block ${
                       expandedSkill === 'E-commerce & Strategy'
-                        ? 'max-h-[1000px] opacity-100'
+                        ? 'max-h-[calc(var(--app-vh,_1svh)*75)] opacity-100 overflow-y-auto md:overflow-visible'
                         : 'max-h-0 opacity-0 overflow-hidden'
                     } md:max-h-none md:opacity-100`}>
                       {skills['E-commerce & Strategy'].map((skill) => (
@@ -800,9 +800,9 @@ function MainApp() {
                         <ChevronDown className={`w-5 h-5 mt-1 transition-transform duration-300 md:hidden ${expandedSkill === 'AI & Data Science' ? 'rotate-180' : ''}`} />
                       </h3>
                     </button>
-                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${
+                    <div className={`space-y-3 text-center transition-[max-height] duration-300 md:block ${
                       expandedSkill === 'AI & Data Science'
-                        ? 'max-h-[1000px] opacity-100'
+                        ? 'max-h-[calc(var(--app-vh,_1svh)*75)] opacity-100 overflow-y-auto md:overflow-visible'
                         : 'max-h-0 opacity-0 overflow-hidden'
                     } md:max-h-none md:opacity-100`}>
                       {skills['AI & Data Science'].map((skill) => (
@@ -832,9 +832,9 @@ function MainApp() {
                         <ChevronDown className={`w-5 h-5 mt-1 transition-transform duration-300 md:hidden ${expandedSkill === 'Digital Marketing' ? 'rotate-180' : ''}`} />
                       </h3>
                     </button>
-                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${
+                    <div className={`space-y-3 text-center transition-[max-height] duration-300 md:block ${
                       expandedSkill === 'Digital Marketing'
-                        ? 'max-h-[1000px] opacity-100'
+                        ? 'max-h-[calc(var(--app-vh,_1svh)*75)] opacity-100 overflow-y-auto md:overflow-visible'
                         : 'max-h-0 opacity-0 overflow-hidden'
                     } md:max-h-none md:opacity-100`}>
                       {skills['Digital Marketing'].map((skill) => (
@@ -881,9 +881,9 @@ function MainApp() {
                         <ChevronDown className={`w-5 h-5 mt-1 transition-transform duration-300 md:hidden ${expandedSkill === 'Development' ? 'rotate-180' : ''}`} />
                       </h3>
                     </button>
-                    <div className={`space-y-3 text-center transition-all duration-300 md:block ${
+                    <div className={`space-y-3 text-center transition-[max-height] duration-300 md:block ${
                       expandedSkill === 'Development'
-                        ? 'max-h-[1000px] opacity-100'
+                        ? 'max-h-[calc(var(--app-vh,_1svh)*75)] opacity-100 overflow-y-auto md:overflow-visible'
                         : 'max-h-0 opacity-0 overflow-hidden'
                     } md:max-h-none md:opacity-100`}>
                       {skills['Development'].map((skill) => (
