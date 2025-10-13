@@ -16,9 +16,26 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    const updateViewportHeight = () => {
+      if (typeof window === 'undefined' || typeof document === 'undefined') return;
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--app-vh', `${vh}px`);
+    };
+
+    updateViewportHeight();
+    window.addEventListener('resize', updateViewportHeight);
+    window.addEventListener('orientationchange', updateViewportHeight);
+
+    return () => {
+      window.removeEventListener('resize', updateViewportHeight);
+      window.removeEventListener('orientationchange', updateViewportHeight);
+    };
+  }, []);
+
   if (!fontLoaded) {
     // Optionally show a loading spinner or blank screen
-    return <div style={{ background: "black", height: "100vh" }} />;
+    return <div style={{ background: "black", height: 'calc(var(--app-vh, 1vh) * 100)' }} />;
   }
 
   return (
@@ -469,7 +486,7 @@ function MainApp() {
       )}
       {/* Main UI fades in after intro */}
       <div className={`transition-opacity duration-700 ${showIntro ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-        <div className="gradient-bg min-h-screen text-white">
+        <div className="gradient-bg min-h-screen-safe text-white">
           {/* Navigation */}
           <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
             <div className="glass-nav px-4 md:px-6 py-3">
@@ -527,7 +544,7 @@ function MainApp() {
           
 
           {/* Hero Section */}
-          <section id="hero" className="min-h-screen flex flex-col items-center justify-center px-4">
+          <section id="hero" className="min-h-screen-safe flex flex-col items-center justify-center px-4">
             <div className="text-center max-w-4xl mx-auto flex flex-col items-center justify-center">
               <h1 className="hero-text gradient-heading w-full max-w-full break-words text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 fade-in font-ethnocentric text-center px-2">
                 Ally Abdullah
@@ -966,7 +983,7 @@ function MainApp() {
                 onClick={closeModal}
             >
               <div 
-                className="glass-panel p-6 md:p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative transition-transform duration-300 scale-95"
+                className="glass-panel p-6 md:p-8 max-w-4xl w-full max-h-[90svh] overflow-y-auto relative transition-transform duration-300 scale-95"
                 onClick={(e) => e.stopPropagation()}
                 style={{ transform: modalProject ? 'scale(1)' : 'scale(0.95)' }}
               >
@@ -1079,7 +1096,7 @@ function MainApp() {
                 <img
                   src="/images/AWS.jpg"
                   alt="AWS Certified"
-                  className="rounded-xl max-w-full max-h-[80vh] object-contain border border-white/10 shadow-lg"
+                  className="rounded-xl max-w-full max-h-[80svh] object-contain border border-white/10 shadow-lg"
                 />
               </div>
             </div>
@@ -1105,7 +1122,7 @@ function MainApp() {
                 <img
                   src="/images/adacc.jpg"
                   alt="Meta Business Suite Ad Account"
-                  className="rounded-xl max-w-full max-h-[90vh] object-contain border border-white/10 shadow-lg"
+                  className="rounded-xl max-w-full max-h-[90svh] object-contain border border-white/10 shadow-lg"
                 />
               </div>
             </div>

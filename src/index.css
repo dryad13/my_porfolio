@@ -17,6 +17,10 @@
   font-family: 'Inter', sans-serif;
 }
 
+:root {
+  --app-vh: 1vh;
+}
+
 /* Custom gradient background animation */
 @keyframes gradientShift {
   0% {
@@ -111,6 +115,9 @@
 
 html, body {
   min-height: 100vh;
+  min-height: 100dvh;
+  min-height: 100svh;
+  min-height: calc(var(--app-vh, 1vh) * 100);
   background-color: transparent !important;
   color-scheme: dark;
 }
@@ -496,7 +503,7 @@ html, body {
 @media (max-width: 768px) {
   .chat-window {
     width: calc(100vw - 2rem);
-    height: calc(100vh - 8rem);
+    height: calc(var(--app-vh, 1vh) * 100 - 8rem);
     bottom: 1rem;
     right: 1rem;
     left: 1rem;
