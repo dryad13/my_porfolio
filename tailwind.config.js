@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         'ethnocentric': ['Ethnocentric', 'sans-serif'],
       },
+      minHeight: {
+        'screen-safe': '100svh',
+      },
     },
   },
   plugins: [],
