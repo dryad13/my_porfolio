@@ -194,6 +194,17 @@ function MainApp() {
   // UPDATED projects data with detailed descriptions and live links
   const projects = [
     {
+      title: 'Pure Tibb',
+      description: 'Developed ',
+      images: {
+        landscape: '/images/download(1).png',
+        portrait: '/images/download(1).png',
+      },
+      hasLiveLink: true,
+      liveLink: 'https://www.puretib.com/',
+      detailedDescription: 'Orchestrated the technical development building their Shopify website. My role involved rapid prototyping and  optimizing conversion funnels for a targeted male audience.'
+    },
+    {
       title: 'Daak and Co.',
       description: 'Led the e-commerce strategy that scaled this fashion brand to over 4M+ PKR in revenue.',
       images: {
